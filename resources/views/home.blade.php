@@ -15,6 +15,8 @@
                     @endif
 
                     <user-location-component></user-location-component>
+                    </br>
+                    <location-form-component></location-form-component>
 
                 </div>
             </div>

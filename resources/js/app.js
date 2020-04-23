@@ -23,10 +23,7 @@ Vue.component(
     'example-component', 
     require('./components/ExampleComponent.vue').default
 );
-Vue.component(
-    'user-location-component', 
-    require('./components/UserLocationComponent.vue').default
-);
+
 Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue')
@@ -40,6 +37,16 @@ Vue.component(
 Vue.component(
     'passport-personal-access-tokens',
     require('./components/passport/PersonalAccessTokens.vue')
+);
+
+Vue.component(
+    'user-location-component', 
+    require('./components/UserLocationComponent.vue').default
+);
+
+Vue.component(
+    'location-form-component', 
+    require('./components/LocationFormComponent.vue').default
 );
 
 /**
