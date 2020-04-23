@@ -15,6 +15,9 @@ class LocationController extends Controller
     public function index()
     {
         //
+        // $locations = Location::all()->jsonSerialize();
+
+        return response(Location::all()->jsonSerialize());
     }
 
     /**

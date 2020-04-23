@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $locations = Location::all();
+        // $locations = Location::all();
 
-        return view('home', compact('locations'));
+        return view('home');
     }
 }

@@ -14,22 +14,8 @@
                         </div>
                     @endif
 
-                    <form>
-                        
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Location</label>
-                            <select class="form-control form-control-lg" id="exampleFormControlSelect1">
-                                @foreach ($locations as $location)
-                                    <option>{{ $location->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary ">Check In</button>
-                        </div>
-                    </form>
+                    <user-location-component></user-location-component>
 
-                    You are logged in!
                 </div>
             </div>
         </div>
