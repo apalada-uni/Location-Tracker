@@ -22,9 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/home', 'UserLocationController@index')->name('home');
 
-
-
-
 // Route::get('/', function () {
 //     return view('index');
 // });

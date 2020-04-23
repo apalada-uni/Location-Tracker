@@ -66,7 +66,7 @@ export default {
     },
 
     methods: {
-        async read() {//index
+        read() {//index
             axios.get('/api/userlocation')
             .then(response => {
                 this.locations = response.data[0];
@@ -101,7 +101,7 @@ export default {
         },
 
         checkIn() {//store
-            window.axios.post('/api/userlocation', this.userLocation)
+            axios.post('/api/userlocation', this.userLocation)
             .then(response => {
                 this.userLocation = Object.assign({
                     id: null,

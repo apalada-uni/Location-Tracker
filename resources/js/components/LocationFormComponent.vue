@@ -3,11 +3,11 @@
     <div class="card">
         <div class="form-group">
             <label for="locationName">Location Name</label>
-            <input type="text" class="form-control" id="locationName" placeholder="Enter Location Name" :value="locationName"></br>
+            <input type="text" class="form-control" id="locationName" placeholder="Enter Location Name" v-model="newLocation.name"></br>
             <label for="locationAddress">Location Address</label>
-            <input type="text" class="form-control" id="locationAddress" placeholder="Enter Location Address" :value="locationAddress">
+            <input type="text" class="form-control" id="locationAddress" placeholder="Enter Location Address" v-model="newLocation.address">
         </div>
-            <button type="button" class="btn btn-primary">Add</button>
+            <button type="button" class="btn btn-primary" @click="addLocation">Add</button>
 
     </div>
 </div>
@@ -18,9 +18,19 @@ export default {
     data() {
         return {
             locations: [],
-            locationName: '',
-            locationAddress: '',
+            newLocation: {
+                name: null,
+                address: null,
+            }
         }
+    },
+
+    methods: {
+        addLocation() {
+            axios.post('/api/location', this.userLocation)
+
+        }
+
     },
 
 
