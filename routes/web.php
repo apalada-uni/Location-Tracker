@@ -20,8 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/home', 'UserLocationController@index')->name('home');
+Route::get('/report', 'HomeController@report')->name('report');
+Route::get('/admin', 'HomeController@admin')->name('admin');
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/user_locations/datatable', 'UserLocationController@datatable')->name('user_locations.datatable');
+// Route::get('/home', 'UserLocationController@index')->name('home');

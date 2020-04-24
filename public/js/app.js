@@ -1956,6 +1956,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1966,9 +1991,34 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  created: function created() {
+    this.getLocations();
+  },
+  computed: {},
   methods: {
     addLocation: function addLocation() {
-      axios.post('/api/location', this.userLocation);
+      var _this = this;
+
+      //store of locationcontroller
+      axios.post('/api/location', this.newLocation).then(function (response) {
+        _this.locations = response.data;
+      });
+    },
+    deleteLocation: function deleteLocation(id) {
+      var _this2 = this;
+
+      //delete of locationcontroller
+      axios["delete"]('/api/location/' + id).then(function (response) {
+        _this2.locations = response.data;
+      });
+    },
+    getLocations: function getLocations() {
+      var _this3 = this;
+
+      //index of locationcontroller
+      axios.get('/api/location').then(function (response) {
+        _this3.locations = response.data;
+      });
     }
   },
   mounted: function mounted() {
@@ -2052,7 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
     read: function read() {
       var _this = this;
 
-      //index
+      //index of userlocationcontroller
       axios.get('/api/userlocation').then(function (response) {
         _this.locations = response.data[0];
         _this.userLocation = Object.assign({
@@ -2067,7 +2117,7 @@ __webpack_require__.r(__webpack_exports__);
     getLocations: function getLocations() {
       var _this2 = this;
 
-      //index
+      //index of locationcontroller
       axios.get('/api/location').then(function (response) {
         _this2.locations = response.data;
       });
@@ -39358,7 +39408,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card", attrs: { id: "add-location-form" } }, [
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "locationName" } }, [
           _vm._v("Location Name")
@@ -39422,6 +39472,8 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
       _c(
         "button",
         {
@@ -39431,10 +39483,67 @@ var render = function() {
         },
         [_vm._v("Add")]
       )
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "card", attrs: { id: "add-location-form" } }, [
+      _c("h1", [_vm._v("Available Locations:")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "location-table" }, [
+        _c("table", { staticStyle: { width: "100%" } }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.locations, function(location) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(location.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(location.address))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteLocation(location.id)
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\r\n                                Delete\r\n                            "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Address")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

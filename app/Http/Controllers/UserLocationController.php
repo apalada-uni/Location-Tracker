@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Location;
 use App\User;
 use App\UserLocation;
+use Freshbitsweb\Laratables\Laratables;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -47,9 +48,7 @@ class UserLocationController extends Controller
     public function store(Request $request)
     {
         //
-        // dd($request->input());
         $input = $request->input();
-        // $input['user_id'] = auth('api')->user()->id;
 
         $userLocation = UserLocation::create($input);
         $userLocation->user_id = auth('api')->id();
@@ -99,7 +98,6 @@ class UserLocationController extends Controller
         $user_location = auth('api')->user()->userLocations->whereNull('check_out')->last();
         
         return response($user_location);
-        // return response(null, Response::HTTP_OK);
     }
 
     /**
@@ -127,7 +125,17 @@ class UserLocationController extends Controller
         return response($user_location);
     }
 
-    
-
-
+    /**
+     * Fetch the most recent
+     *
+     * @param  \App\UserLocation  $userLocation
+     * @return \Illuminate\Http\Response
+     */
+    public function datatable()
+    {
+        // dd(UserLocation::with(['user','location'])->get());
+        return Laratables::recordsOf(UserLocation::class, function ($query) {
+            return $query->with(['user','location']);
+        });
+    }
 }

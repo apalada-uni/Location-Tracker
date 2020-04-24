@@ -10882,3 +10882,11 @@ a.text-dark:focus {
   }
 }
 
+.card {
+  padding: 20px;
+}
+
+.btn {
+  width: 100%;
+}
+

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <user-location-component></user-location-component>
+                    <location-form-component></location-form-component>
 
                 </div>
             </div>

@@ -66,7 +66,7 @@ export default {
     },
 
     methods: {
-        read() {//index
+        read() {//index of userlocationcontroller
             axios.get('/api/userlocation')
             .then(response => {
                 this.locations = response.data[0];
@@ -77,10 +77,10 @@ export default {
                     check_in: null,
                     check_out: null,
                 }, response.data[1]);
-            })
+            });
         },
 
-        getLocations() {//index
+        getLocations() {//index of locationcontroller
             axios.get('/api/location')
             .then(response => {
                 this.locations = response.data;

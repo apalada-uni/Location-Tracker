@@ -39,6 +39,17 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         //
+        // $input = $request->input();
+        // dd($request->input());
+        Location::create($request->input());
+
+        // $userLocation = Location::create($input);
+        // $userLocation->user_id = auth('api')->id();
+        // $userLocation->location_id = $request->location_id;
+        // $userLocation->check_in = date('Y/m/d h:i:s', time());
+        // $userLocation->save();
+
+        return response(Location::all());
     }
 
     /**
@@ -84,5 +95,9 @@ class LocationController extends Controller
     public function destroy(Location $location)
     {
         //
+        // dd($location);
+        $location->delete();
+
+        return response(Location::all());
     }
 }
